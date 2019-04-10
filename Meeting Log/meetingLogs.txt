@@ -1,3 +1,34 @@
 Meeting 1
     Date: Feb 19, 2019
     Duration: 2 hours
+
+Meeting 2
+    Date: Feb 26, 2019
+    Duration: 1 hour
+
+Meeting 3
+    Date: March 5, 2019
+    Duration: 45 minutes
+
+Meeting 4
+    Date: March 12, 2019
+    Duration: 30 minutes
+
+Meeting 5
+    Date: March 19, 2019
+    Duration: 45 minutes
+
+Meeting 6
+    Date: March 26, 2019
+    Duration: 2 hours
+
+Meeting 7
+    Date: April 2, 2019
+    Duration: 1.5 hours
+
+Meeting 8
+    Date: April 9, 2019
+    Duration: 1 hours
+
+
+
