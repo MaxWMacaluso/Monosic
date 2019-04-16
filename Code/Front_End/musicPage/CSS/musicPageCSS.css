@@ -29,7 +29,7 @@ img{max-width:100%;}
 
 /*-- Index-Page-Styling --*/
 
-/* For button1 */
+/* Start button1 */
 .button1 
 {
     display: inline-block;
@@ -78,7 +78,7 @@ img{max-width:100%;}
 
   /* End button1 */
 
-  /* For button2 */
+  /* Start button2 */
 .button2 
 {
     display: inline-block;
@@ -126,10 +126,6 @@ img{max-width:100%;}
   }
 
   /* End button2 */
-
-
-
-
 
 body 
 {
