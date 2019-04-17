@@ -17,8 +17,8 @@ var cookieParser = require('cookie-parser');
 var spotifyAccessToken;
 var spotifyRefreshToken;
 
-var client_id = 'CLIENT ID'; // Your client id
-var client_secret = 'CLIENT SECRET'; // Your secret
+var client_id = 'CLIENT_ID'; // Your client id
+var client_secret = 'CLIENT_SECRET'; // Your secret
 var redirect_uri = 'http://localhost:3000/callback/';
 
 /**
@@ -180,3 +180,12 @@ app.get('/music', function(req, res) {
 
 console.log('Listening on 3000');
 app.listen(3000);
+
+/*
+{
+  "error": {
+    "status": 401,
+    "message": "The access token expired"
+  }
+}
+*/

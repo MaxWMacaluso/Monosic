@@ -106,17 +106,7 @@ $(document).ready(function() {
 
 
 //INSERT SPOTIFY SCRIPTS
-function getHashParams() {
-  var hashParams = {};
-  var e, r = /([^&;=]+)=?([^&;]*)/g,
-      q = window.location.hash.substring(1);
-  while ( e = r.exec(q)) {
-     hashParams[e[1]] = decodeURIComponent(e[2]);
-  }
-  return hashParams;
-}
-
-function goToPage(myUrl){
+function spotifyParameters(){
   params = getHashParams();
   if (params) {
     var access_token = params.access_token,
@@ -128,11 +118,44 @@ function goToPage(myUrl){
     var access_token = params.access_token,
         refresh_token = params.refresh_token,
         error = params.error;
+    var queryParams = "#access_token="+access_token+"&refresh_token="+refresh_token;
+    return queryParams;
+}
+return;
+}
+
+function getHashParams() {
+  var hashParams = {};
+  var e, r = /([^&;=]+)=?([^&;]*)/g,
+      q = window.location.hash.substring(1);
+  while ( e = r.exec(q)) {
+     hashParams[e[1]] = decodeURIComponent(e[2]);
+  }
+  return hashParams;
+}
+
+function goToPage(myUrl){
+  var hash = window.location.hash.substr(1);
+
+  //params = getHashParams();
+  console.log(hash);
+  /*if (params) {
+    var access_token = params.access_token,
+        refresh_token = params.refresh_token,
+        error = params.error;
+    if (error) {
+      alert('There was an error during the authentication');
+    }
+    var access_token = params.access_token,
+        refresh_token = params.refresh_token,
+        error = params.error;
     var queryParams = "?access_token="+access_token+"&refresh_token="+refresh_token+"+&error="+error;
     myUrl = myUrl + queryParams;
+  }*/
+  if (hash != "") {
+    myUrl = myUrl + "#" + hash;
   }
-  window.open(myUrl);
-  console.log("hi");
+  window.open(myUrl, '_self');
 
 }
 
@@ -170,6 +193,10 @@ $.ajax({
 
 
 function refreshSpotifyToken(){
+  var params = getHashParams();
+  var access_token = params.access_token,
+      refresh_token = params.refresh_token,
+      error = params.error;
   $.ajax({
     url: '/refresh_token',
     data: {
@@ -180,9 +207,56 @@ function refreshSpotifyToken(){
     access_token = data.access_token;
     console.log("Access Token: "+access_token);
     console.log("Refresh Token "+refresh_token);
+    return;
     /*oauthPlaceholder.innerHTML = oauthTemplate({
       access_token: access_token,
       refresh_token: refresh_token
     });*/
   });
 }
+
+function spotify(apiPath) {
+  /*apiPath = "https://api.spotify.com"+apiPath+spotifyParameters().replace("#","?");
+  $.ajax({url:apiPath, dataType:"jsonp"}).then(function(data) {
+    console.log(data);
+    return data;
+  }).fail(refreshSpotifyToken());*/
+  //The above is blocked by cross origin whatever.
+
+  var params = getHashParams();
+  var access_token = params.access_token,
+      refresh_token = params.refresh_token,
+      error = params.error;
+  console.log('https://api.spotify.com'+apiPath+'?access_token='+access_token)
+  if (error) {
+    alert('There was an error during the authentication');
+    return;
+  } else {
+    if (access_token) {
+      // render oauth info
+      $.ajax({
+          url: 'https://api.spotify.com'+apiPath,
+          headers: {
+            'Authorization': 'Bearer ' + access_token
+          },
+          success: function(response) {
+            console.log(response);
+            return response;
+          },
+          error: function(){
+            alert("Token needs to be refreshed!")
+            refreshSpotifyToken();
+          }
+
+      });
+    } else {
+      console.log("No access token");
+      return;
+    }
+}
+}
+
+/*document.getElementById('spotifyPlaylists').ready(function() {
+  console.log('HELLO');
+  spotify("/v1/me/playlists");
+});*/
