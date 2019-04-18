@@ -118,13 +118,13 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('/#' +
+        res.redirect('/linkPage#' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
           }));
       } else {
-        res.redirect('/#' +
+        res.redirect('/linkPage#' +
           querystring.stringify({
             error: 'invalid_token'
           }));
@@ -176,6 +176,10 @@ app.get('/music', function(req, res) {
 	res.render('pages/musicPage',{
 		my_title:"Music Page"
 	});
+});
+
+app.get('/', function(req, res) {
+  res.redirect('/loginRegister');
 });
 
 console.log('Listening on 3000');
