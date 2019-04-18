@@ -207,6 +207,11 @@ function refreshSpotifyToken(){
     access_token = data.access_token;
     console.log("Access Token: "+access_token);
     console.log("Refresh Token "+refresh_token);
+    var myUrl =window.location.pathname+"#access_token="+access_token+"&refresh_token="+refresh_token;
+    window.location.href = myUrl;
+    window.open(myUrl, '_self');
+
+
     return;
     /*oauthPlaceholder.innerHTML = oauthTemplate({
       access_token: access_token,
@@ -215,14 +220,17 @@ function refreshSpotifyToken(){
   });
 }
 
+
+
 function spotify(apiPath) {
+  return new Promise ((resolve, reject) => {
+  var obj;
   /*apiPath = "https://api.spotify.com"+apiPath+spotifyParameters().replace("#","?");
   $.ajax({url:apiPath, dataType:"jsonp"}).then(function(data) {
     console.log(data);
     return data;
   }).fail(refreshSpotifyToken());*/
   //The above is blocked by cross origin whatever.
-
   var params = getHashParams();
   var access_token = params.access_token,
       refresh_token = params.refresh_token,
@@ -232,28 +240,41 @@ function spotify(apiPath) {
     alert('There was an error during the authentication');
     return;
   } else {
-    if (access_token) {
-      // render oauth info
+    // if (access_token) {
+      console.log("Access token: "+access_token);
+      // render oauth info LEARN MORE ABOUT HEADERS SECTION
       $.ajax({
           url: 'https://api.spotify.com'+apiPath,
           headers: {
-            'Authorization': 'Bearer ' + access_token
+            // 'Authorization': 'Basic ' + btoa('myuser:mypswd'),
+            // 'Order-Num': 123
+            'Authorization': 'Bearer '+ access_token
           },
+          // dataType:"jsonp",
+
           success: function(response) {
+            // var obj = JSON.parse('{ "name":"John", "age":30, "city":"New York"}');
+
+            // var obj = JSON.parse(response);
+            console.log(`response type: ${typeof response}`);
             console.log(response);
-            return response;
+            console.log(response.items[0].name);
+            resolve(response);
           },
-          error: function(){
+          error: function(error){
+            console.log(error);
             alert("Token needs to be refreshed!")
             refreshSpotifyToken();
+            reject(new Error ("Token needs to be refreshed"));
           }
 
       });
-    } else {
-      console.log("No access token");
-      return;
-    }
+
+    // } else {
+      // console.log("No access token");    }
+      // console.log(obj);
 }
+});
 }
 
 /*document.getElementById('spotifyPlaylists').ready(function() {
