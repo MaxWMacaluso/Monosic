@@ -161,11 +161,13 @@ app.get('/refresh_token', function(req, res) {
 });
 
 //NON SPOTIFY CODE
-app.get('/linkPage', function(req, res) {
-	res.render('pages/linkPage',{
-		my_title:"Link Page"
-	});
-});
+
+//Don't need below anymore cuz link page obsolete
+// app.get('/linkPage', function(req, res) {
+// 	res.render('pages/linkPage',{
+// 		my_title:"Link Page"
+// 	});
+// });
 
 app.get('/loginRegister', function(req, res) {
 	res.render('pages/login_register',{
