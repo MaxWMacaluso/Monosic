@@ -182,7 +182,7 @@ app.get('/music', function(req, res) {
 //For home page
 app.get('/homePage', function(req, res) {
 	res.render('pages/homePage',{
-		my_title:"Home Page"
+		my_title:"Home"
 	});
 });
 
