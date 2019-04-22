@@ -7,6 +7,7 @@
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
 
+ //File used for running everything
 
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
@@ -175,6 +176,13 @@ app.get('/loginRegister', function(req, res) {
 app.get('/music', function(req, res) {
 	res.render('pages/musicPage',{
 		my_title:"Music Page"
+	});
+});
+
+//For home page
+app.get('/homePage', function(req, res) {
+	res.render('pages/homePage',{
+		my_title:"Home Page"
 	});
 });
 
