@@ -51,13 +51,13 @@ app.use(express.static(__dirname + '/'))
 app.set('view engine', 'ejs');
 
 
-app.get('/login', function(req, res) {
+app.get('/loginSpotify', function(req, res) {
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email';
+  var scope = 'user-read-private user-read-email user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming playlist-read-private playlist-modify-public playlist-modify-private playlist-read-collaborative';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -118,13 +118,13 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('/linkPage#' +
+        res.redirect('/music#' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
           }));
       } else {
-        res.redirect('/linkPage#' +
+        res.redirect('/music#' +
           querystring.stringify({
             error: 'invalid_token'
           }));

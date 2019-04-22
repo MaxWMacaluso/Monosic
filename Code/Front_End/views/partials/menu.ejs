@@ -7,7 +7,7 @@
 	border-top: none;
 	border-top-left-radius: initial;
 	border-top-right-radius: initial;">
-	  <a class="navbar-brand" href= "home.html">
+	  <a class="navbar-brand" href= "/">
 		<img class="rounded-circle" src="../resources/img/icons/apple-icon.png" alt="" width="30" height="30">
 	  </a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,18 @@
 		  </li>
 		</ul>
 		<div class="form-inline my-2 my-lg-0">
-			<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
+			<ul class="navbar-nav mr-auto">
+			  <li class="nav-item">
+					<p class = "nav-link">Link Accounts:</p>
+			  </li>
+			  <li class="nav-item">
+					<a href = "/loginSpotify"><img class="mask flex-center" src="../resources/img/spotifyLogo.png" id = "spotifyLogoLink" alt="" width="30" height="30"></a>
+			  </li>
+			  <li class="nav-item">
+					<img class="brightness" src="../resources/img/appleMusicLogo.png" alt="" width="30" height="30">
+			  </li>
+</ul>
+			<button class="btn btn-outline-light my-2 my-sm-0" type="submit" style = "margin-left: 10px;">Logout</button>
 		</div>
 	  </div>
 	</nav>

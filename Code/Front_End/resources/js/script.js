@@ -281,3 +281,8 @@ function spotify(apiPath) {
   console.log('HELLO');
   spotify("/v1/me/playlists");
 });*/
+
+$(document).ready(function() {
+  if (getHashParams().access_token.length > 1)
+    $('#spotifyLogoLink').attr('src','../resources/img/spotifyLogoGray.png');
+});

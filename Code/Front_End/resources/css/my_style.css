@@ -29,6 +29,7 @@ img{max-width:100%;}
 
 /*-- Index-Page-Styling --*/
 
+
 body
 {
     font-family: 'Roboto', sans-serif;
@@ -1309,7 +1310,7 @@ body
 {
     font-family: 'Roboto', sans-serif;
     text-align: center;
-    background: url("../img/musicPageBackground.jpeg");
+    background: url("../img/background2.jpeg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
