@@ -430,7 +430,12 @@ function musicPairsFromSpotify(href) {
 });
 }
 
-function transferToYoutubeFromSpotify(name, href) {
+function transferToYoutubeFromSpotify(element, name, href) {
+  $('#'+element).attr("disabled", true);
+  $('#'+element).css("background-color","white");
+  // $('#'+element).css("opacity","0");
+  $('#'+element).hide(200);
+  console.log(element);
   var playlistName = name;
   musicPairsFromSpotify(href).then((musicPairs) => {
     createPlaylist(playlistName).then((playlistData) => {
@@ -519,8 +524,13 @@ function musicPairsFromYoutube(playlistId) {
 //
 // }
 
-function transferToSpotifyFromYoutube(name, youtubePlaylistId) {
+function transferToSpotifyFromYoutube(element, name, youtubePlaylistId) {
   var playlistName = name;
+  $('#'+element).attr("disabled", true);
+  $('#'+element).css("background-color","white");
+  // $('#'+element).css("opacity","0");
+  $('#'+element).hide(200);
+  // return;
   musicPairsFromYoutube(youtubePlaylistId).then(musicPairs => {
     spotifyCreateNewPlaylist(playlistName).then((playlistData) => {
       console.log(playlistData.id);
@@ -547,22 +557,7 @@ function transferToSpotifyFromYoutube(name, youtubePlaylistId) {
   //.tracks.items[i].href,id,name
 }
 
-function transferToYoutubeFromSpotify(name, href) {
-  var playlistName = name;
-  musicPairsFromSpotify(href).then((musicPairs) => {
-    createPlaylist(playlistName).then((playlistData) => {
-      var playlistId = playlistData.result.id;
-      for (i = 0; i < musicPairs.length; i++) {
-        searchForVideo(formatForYoutube(musicPairs[i])).then((searchResult) => {
-          var videoId = searchResult.result.items[0].id.videoId
-          addVideoToPlaylist(videoId, playlistId).then((data) => {
-            console.log("Video added to playlist!")
-          })
-        });
-      }
-    });
-  });
-}
+
 
 
 

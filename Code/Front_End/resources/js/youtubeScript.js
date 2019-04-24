@@ -1,4 +1,4 @@
-const CLIENT_ID = 'YOUR_CLIENT_ID_FOR_YOUTUBE';
+const CLIENT_ID = 'YOUTUBE_CLIENT_ID';
   const DISCOVERY_DOCS = [
     'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'
   ];
@@ -200,7 +200,7 @@ function getMyYoutubePlaylists() {
     }
     else {
       for (i = 0; i < data.result.items.length; i++) {
-        $('#youtubePlaylists').html($('#youtubePlaylists').html()+'<button onClick = "transferToSpotifyFromYoutube(\''+data.result.items[i].snippet.title+'\', \''+data.result.items[i].id+'\')" class = "button1" id = "button1" style = "vertical-align: middle; width:100%; position:relative; left:40px"> <span>'+data.result.items[i].snippet.title+'</span></button>'
+        $('#youtubePlaylists').html($('#youtubePlaylists').html()+'<button id = "youtubeButton'+i+'" onClick = "transferToSpotifyFromYoutube(\'youtubeButton'+i+'\',\''+data.result.items[i].snippet.title+'\', \''+data.result.items[i].id+'\')" class = "button1" id = "button1" style = "vertical-align: middle; width:100%; position:relative; left:40px"> <span>'+data.result.items[i].snippet.title+'</span></button>'
       );}
     }
   }
