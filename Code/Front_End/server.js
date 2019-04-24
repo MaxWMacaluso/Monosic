@@ -7,7 +7,6 @@
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
 
- //File used for running everything
 
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
@@ -161,13 +160,11 @@ app.get('/refresh_token', function(req, res) {
 });
 
 //NON SPOTIFY CODE
-
-//Don't need below anymore cuz link page obsolete
-// app.get('/linkPage', function(req, res) {
-// 	res.render('pages/linkPage',{
-// 		my_title:"Link Page"
-// 	});
-// });
+app.get('/linkPage', function(req, res) {
+	res.render('pages/linkPage',{
+		my_title:"Link Page"
+	});
+});
 
 app.get('/loginRegister', function(req, res) {
 	res.render('pages/login_register',{
@@ -181,15 +178,14 @@ app.get('/music', function(req, res) {
 	});
 });
 
-//For home page
 app.get('/homePage', function(req, res) {
 	res.render('pages/homePage',{
-		my_title:"Home"
+		my_title:"Home Page"
 	});
 });
 
 app.get('/', function(req, res) {
-  res.redirect('/loginRegister');
+  res.redirect('/homePage');
 });
 
 console.log('Listening on 3000');

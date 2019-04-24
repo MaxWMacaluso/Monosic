@@ -21,12 +21,12 @@
 					<li class="nav-item">
 						<a style = "cursor:pointer" class="nav-link" onClick = "goToPage('/loginRegister')">Login</a>
 					</li>
-				
+
 					<!-- DONT NEED ANYMORE BECAUSE OF NEW MENU BAR FEATURE -->
 					<!-- <li class="nav-item">
 					<a style = "cursor:pointer" class="nav-link" onClick = "goToPage('/linkPage')">Link Page</a>
 					</li> -->
-					
+
 					<li class="nav-item">
 						<a style = "cursor:pointer" class="nav-link" onClick = "goToPage('/music')">Music</a>
 					</li>
@@ -37,10 +37,17 @@
 							<p class = "nav-link">Link Accounts:</p>
 						</li>
 						<li class="nav-item">
-							<a href = "/loginSpotify" target = "_blank"><img class="mask flex-center" src="../resources/img/spotifyLogo.png" id = "spotifyLogoLink" alt="" width="30" height="30"></a>
+							<!--a href = "/loginSpotify"><img class="mask flex-center" src="../resources/img/spotifyLogo.png" id = "spotifyLogoLink" alt="" width="30" height="30"></a-->
+							<a style = "cursor:pointer" onclick = "spotifyLogin()"><img class="mask flex-center" src="../resources/img/spotifyLogo.png" id = "spotifyLogoLink" alt="" width="30" height="30"></a>
+						</li>
+						<li class="nav-item">
+							<a style = "cursor:pointer" onclick = "alterSignin()"><img class="mask flex-center" src="../resources/img/youtubeLogo.png" id = "youtubeLogoLink" alt="" width="30" height="30"></a>
 						</li>
 						<li class="nav-item">
 							<img class="brightness" src="../resources/img/appleMusicLogo.png" alt="" width="30" height="30">
+						</li>
+						<li class="nav-item">
+							<img class="brightness" src="../resources/img/soundcloudLogo.png" alt="" width="30" height="30">
 						</li>
 					</ul>
 					<button class="btn btn-outline-light my-2 my-sm-0" type="submit" style = "margin-left: 10px;">Logout</button>
