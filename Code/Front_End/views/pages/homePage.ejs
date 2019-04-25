@@ -6,9 +6,19 @@
 </head><body>
 
 <% include ../partials/menu %>
+
+<%
+	var me = "";
+	if (user != null){
+		 me = user+",";
+	}
+
+
+
+%>
 	<!-- <h1> Link Accounts </h1> -->
 	<div class = "container w3layouts agileits" style = "position:relative; top:40px">
-		<h1 style = "position:relative; margin-top: 10px; padding-bottom: 0px; margin-bottom: 0px;"> Welcome to Monosic! </h1>
+		<h1 style = "position:relative; margin-top: 10px; padding-bottom: 0px; margin-bottom: 0px;"> Welcome <%-me%> to Monosic! </h1>
 		<img style = "width:100%; max-width:250px;" src="../resources/img/monosic2.png">
 		<div style = "position:relative; margin-top: 0px; padding-top: 0px; color:white;">
 			<h2>What is Monosic?</h2>

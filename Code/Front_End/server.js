@@ -7,7 +7,7 @@
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
 
-
+var user = null;
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var cors = require('cors');
@@ -159,28 +159,135 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
+//Create Database Connection
+var pgp = require('pg-promise')();
+
+/**********************
+  Database Connection information
+  host: This defines the ip address of the server hosting our database.  We'll be using localhost and run our database on our local machine (i.e. can't be access via the Internet)
+  port: This defines what port we can expect to communicate to our database.  We'll use 5432 to talk with PostgreSQL
+  database: This is the name of our specific database.  From our previous lab, we created the football_db database, which holds our football data tables
+  user: This should be left as postgres, the default user account created when PostgreSQL was installed
+  password: This the password for accessing the database.  You'll need to set a password USING THE PSQL TERMINAL THIS IS NOT A PASSWORD FOR POSTGRES USER ACCOUNT IN LINUX!
+**********************/
+const dbConfig = {
+	host: 'localhost',
+	port: 5430,
+	database: 'sanmple_db',
+	user: 'postgres',
+	password: 'pwd'
+};
+
+var db = pgp(dbConfig);
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/'));//This line is necessary for us to use relative paths and access our resources directory
+
 //NON SPOTIFY CODE
 app.get('/linkPage', function(req, res) {
 	res.render('pages/linkPage',{
-		my_title:"Link Page"
+    my_title:"Link Page",
+    user: user
 	});
 });
 
-app.get('/loginRegister', function(req, res) {
-	res.render('pages/login_register',{
-		my_title:"Login / Register"
+app.get('/login', function(req, res) {
+  user = null;
+	res.render('pages/login',{
+    my_title:"Login",
+    user: user
 	});
+});
+
+app.post('/login', function(req, res) { 
+  var account = req.body.useraccount;
+  var passw = req.body.userpassword;
+  var select = "SELECT username, password FROM users WHERE username = '" + account + "' AND password = '" +  passw + "';";
+
+  db.any(select)
+    .then(function (rows) {
+      user = rows[0].username;
+      console.log(user)
+      res.render('pages/homePage',{
+        my_title: "Home Page",
+        user: user
+})
+  })
+  .catch(error => {
+      console.log(error);
+      // display error message in case an error
+      res.render('pages/login', {
+          my_title: 'Login',
+          user: user
+      })
+  });
+});
+
+
+app.get('/register', function(req, res) {
+	res.render('pages/register',{
+    my_title:"Register",
+    user: user
+	});
+});
+
+app.post('/register', function(req, res) {
+  var Username = req.body.username;
+  var Password = req.body.password;
+  var Email = req.body.email;
+  var Phone = req.body.phone;
+  //var select = "SELECT username FROM users WHERE username = " + Username + ";";
+  //var insert_statement = "INSERT INTO users(username, password, email, phone) WHERE NOT EXISTS(SELECT username, password, email, phone FROM users WHERE (username ='" + Username + "' OR password = '" + Password + "' OR email ='" + Email +"' OR phone = '" + Phone + "'))";    
+  var insert_statement = "INSERT INTO users(username, password, email, phone) VALUES('" + Username + "','" + Password + "','" + Email +"', '" + Phone + "' )";        
+
+  db.task('get-everything', task => {
+    return task.batch([
+        task.any(insert_statement),
+        //task.any(select)
+    ]);
+  })
+  .then(info => {
+    res.render('pages/login',{
+      my_title: "Register",
+      data: info[1],
+      user: null
+    })
+  })
+  .catch(error => {
+    // display error message in case an error
+    console.log(error);
+        request.flash('error', err);
+        response.render('pages/register', {
+            title: 'Register',
+            data: ''
+        })
+  });
 });
 
 app.get('/music', function(req, res) {
-	res.render('pages/musicPage',{
-		my_title:"Music Page"
-	});
+  if (user == null){
+    res.redirect('/login');
+  } else {
+    res.render('pages/musicPage',{
+      my_title:"Music Page",
+      user: user
+    });
+  }
 });
 
 app.get('/homePage', function(req, res) {
 	res.render('pages/homePage',{
-		my_title:"Home Page"
+    my_title:"Home Page",
+    user: user
+	});
+});
+
+app.get('/logout', function(req, res) {
+  user = null;
+	res.render('pages/homePage',{
+    my_title:"Home Page",
+    user: user
 	});
 });
 

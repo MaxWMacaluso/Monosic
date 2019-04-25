@@ -1,0 +1,37 @@
+
+<!-- //Head -->
+
+<!-- Body -->
+<% include ../partials/header %>
+<script></script>
+</head><body>
+	
+<% include ../partials/menu %>
+
+	<!-- <h1>Welcome Come To Monosic</h1> -->
+
+	<div class="container w3layouts agileits" style = "position:relative; top: 40px">
+        <div class="login w3layouts agileits" style = "position:relative;">
+            <h1>Please Input Required Fields</h1>
+			<div class="clear"></div>
+		</div>
+
+		<div class="register w3layouts agileits" style = "position:relative;">
+			<h2>Registration</h2>
+			
+			<form action="/register" method="post" class="send-button w3layouts agileits">
+				<input type="text" Name="username" placeholder="username" required="">
+				<input type="text" Name="email" placeholder="email" required="">
+				<input type="password" Name="password" placeholder="password" required="">
+				<input type="password" Name="Confirm Password" placeholder="Confirm password" required="">
+                <input type="text" Name="phone" placeholder="phone" required="">
+                <input type="submit" value="Register">
+			</form>
+			<div class="clear"></div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	<% include ../partials/footer %>

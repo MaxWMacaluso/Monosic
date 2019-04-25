@@ -1,4 +1,14 @@
-	<nav class="navbar navbar-expand-lg navbar-dark" style = "background-color: rgba(10, 10, 10, 0.77);
+<%
+	var me = "";
+	var button;
+	if (user != null){
+		 me = user+",";
+		 button = '<a href = "/login"><button class="btn btn-outline-light my-2 my-sm-0" type="submit" style = "margin-left: 10px;">Logout</button></a>'
+	} else {
+		button = '<a href = "/logout"><button class="btn btn-outline-light my-2 my-sm-0" type="submit" style = "margin-left: 10px;">Login</button></a>'
+	}
+%>
+<nav class="navbar navbar-expand-lg navbar-dark" style = "background-color: rgba(10, 10, 10, 0.77);
 		border: 2px ridge rgba(238, 238, 238, 0.13);
 		border-radius: 5px;
 		-moz-box-shadow: 0 -5px 10px 1px rgba(16, 16, 16, 0.57);
@@ -19,7 +29,7 @@
 						<a style = "cursor:pointer" class="nav-link" onClick = "goToPage('/homePage')">Home</a>
 					</li>
 					<li class="nav-item">
-						<a style = "cursor:pointer" class="nav-link" onClick = "goToPage('/loginRegister')">Login</a>
+						<a style = "cursor:pointer" class="nav-link" onClick = "goToPage('/login')">Login</a>
 					</li>
 
 					<!-- DONT NEED ANYMORE BECAUSE OF NEW MENU BAR FEATURE -->
@@ -50,7 +60,9 @@
 							<img class="brightness" src="../resources/img/soundcloudLogo.png" alt="" width="30" height="30">
 						</li>
 					</ul>
-					<button class="btn btn-outline-light my-2 my-sm-0" type="submit" style = "margin-left: 10px;">Logout</button>
+					<%-button%>
+
+					<!-- <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style = "margin-left: 10px;">Logout</button> -->
 				</div>
 			</div>
 	</nav>

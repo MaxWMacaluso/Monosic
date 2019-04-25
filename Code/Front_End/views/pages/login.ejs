@@ -1,0 +1,41 @@
+
+<!-- //Head -->
+
+<!-- Body -->
+<% include ../partials/header %>
+<script></script>
+</head><body>
+	
+<% include ../partials/menu %>
+
+	<!-- <h1>Welcome Come To Monosic</h1> -->
+
+	<div class="container w3layouts agileits" style = "position:relative; top: 40px">
+		<div class="login w3layouts agileits" style = "position:relative;">
+			<div name="Signin"></div>
+				<h2>Sign in</h2>
+				<small style = "color: white; font-size: 0.5em">(You need to login to access music page, then link your seperate accounts!)</small>
+				<form action="#" method="post" class="send-button w3layouts agileits">
+					<input type="text" Name="useraccount" placeholder="username" required="">
+					<input type="password" Name="userpassword" placeholder="password" required="">
+					<ul class="tick w3layouts agileits">
+						<li>
+							<input type="checkbox" id="brand1" value="">
+							<label for="brand1"><span></span>Remember me</label>
+						</li>
+					</ul>
+					<input type="submit" value="LOG IN">
+				</form>
+			<div class="clear"></div>
+		</div>
+
+		<div class="register w3layouts agileits" style = "position:relative;">
+			<h2>Dont have an account <a href="/register">Sign up Here</a>.</h2>
+			<div class="clear"></div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	<% include ../partials/footer %>
