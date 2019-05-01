@@ -1,7 +1,7 @@
 # Monosic
 CSCI 3308 Team Project<br/>
 
-Song transfer in one platform.
+Unprecedented song transfer offered in one platform.
 
 ## What is Monosic?
 
