@@ -36,12 +36,12 @@ Some music may not transfer successfully due to the copyright issue.<br />
 
 
 ## Authors
-* **Max Macaluso** - *Frontend* -       
-* **Jiahao Wang** - *Frontend* - 
-* **Peter Martin** - *Integration Layer* -       
-* **Robert Sarno** - *Integration Layer* - 
-* **Zongyi Huang** - *Backedn* -       
-* **Keyu Wu** - *Backend* - 
+* **Max Macaluso** - *Frontend*       
+* **Jiahao Wang** - *Frontend*
+* **Peter Martin** - *Integration Layer*     
+* **Robert Sarno** - *Integration Layer*
+* **Zongyi Huang** - *Backedn*       
+* **Keyu Wu** - *Backend*
 
 ```
 The final interpretation of Monosic is owned by the Group.
