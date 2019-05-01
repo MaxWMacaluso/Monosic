@@ -1,7 +1,7 @@
 # Monosic
-CSCI 3308 Team Project<br />
+CSCI 3308 Team Project<br/>
 
-Getting your all music in a platform.
+Song transfer in one platform.
 
 ## What is Monosic?
 
@@ -13,35 +13,35 @@ We currently support Youtube Music and Spotify.
 
 ### Signin/Signup
 
-If you have an account alread, simply login in the upper right hand corner of the webpage to start.<br />
-Or you can register a new account by click on sign up.
+If you have an account alread, simply login in the upper right hand corner of the webpage to start.<br/>
+Or you can register a new account by clicking on sign up.
 
 ### Link Other Music Platforms
 
-By clicking the buttons on the upper right corner, you will be taking to the other music platforms login page.<br />
-After you login, you will be taking back to Monosic, and music playlists will be be automatically shown on music page.
+By clicking the buttons in the upper right corner, you will be taken to the corresponding music platform's login page.<br/>
+After you login, you will be taken back to Monosic, and your current music playlists will be be automatically displayed in the music page.
 
 ### Transfer Music
 
-Move your mouse to the playlist you want to transfer, and click the button on the right side, then you done.<br />
-Muiscs on the playlists will go to the other application.<br />
-Some music may not transfer successfully due to the copyright issue.<br />
+First move your mouse to the playlist you want to transfer, then click the button on the right side, and then you're done.<br/>
+Songs on the playlists will then transfer to the other music service.<br/>
+Some titles may not transfer successfully due to copyright issues.<br/>
 
 
 ## Built With
 
-* [Visual Studio Code] - The frontend used
-* [Express JS] - Integration Layer used
-* [PostgreSQL] - Used to keep user data.
+* [Visual Studio Code] - Front End
+* [Express JS] - Integration Layer
+* [PostgreSQL] - Database
 
 
 ## Authors
-* **Max Macaluso** - *Frontend*       
-* **Jiahao Wang** - *Frontend*
+* **Max Macaluso** - *Front end*       
+* **Jiahao Wang** - *Front end*
 * **Peter Martin** - *Integration Layer*     
 * **Robert Sarno** - *Integration Layer*
-* **Zongyi Huang** - *Backedn*       
-* **Keyu Wu** - *Backend*
+* **Zongyi Huang** - *Back end*       
+* **Keyu Wu** - *Back end*
 
 ```
 The final interpretation of Monosic is owned by the Group.
